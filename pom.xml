@@ -12,11 +12,14 @@
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
         <version.gwt>2.9.0</version.gwt>
-        <version.spring>4.3.18.RELEASE</version.spring>
+        <version.spring>5.3.5</version.spring>
+        <version.hibernate>5.1.15.Final</version.hibernate>
+        <version.postgresql>42.2.19</version.postgresql>
         <version.slf4j>1.7.30</version.slf4j>
         <version.gwt-sl>1.7</version.gwt-sl>
         <version.restygwt>2.2.7</version.restygwt>
         <version.jaxrs>3.0.12.Final</version.jaxrs>
+        <version.lombok>1.18.18</version.lombok>
     </properties>
 
     <repositories>
@@ -30,7 +33,49 @@
         </repository>
     </repositories>
 
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+                <version>${version.lombok}</version>
+                <scope>provided</scope>
+            </dependency>
+            <dependency>
+                <groupId>com.google.gwt</groupId>
+                <artifactId>gwt-dev</artifactId>
+                <version>${version.gwt}</version>
+                <scope>provided</scope>
+            </dependency>
+            <dependency>
+                <groupId>com.google.gwt</groupId>
+                <artifactId>gwt-user</artifactId>
+                <version>${version.gwt}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.google.gwt</groupId>
+                <artifactId>gwt-servlet</artifactId>
+                <version>${version.gwt}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-webmvc</artifactId>
+                <version>${version.spring}</version>
+            </dependency>
+            <dependency>
+                <groupId>javax.validation</groupId>
+                <artifactId>validation-api</artifactId>
+                <version>2.0.1.Final</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
     <dependencies>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>${version.lombok}</version>
+        </dependency>
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
@@ -45,13 +90,10 @@
         <dependency>
             <groupId>com.google.gwt</groupId>
             <artifactId>gwt-dev</artifactId>
-            <version>${version.gwt}</version>
-            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>com.google.gwt</groupId>
             <artifactId>gwt-user</artifactId>
-            <version>${version.gwt}</version>
         </dependency>
         <dependency>
             <groupId>net.sf.gwt-widget</groupId>
@@ -71,7 +113,16 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-webmvc</artifactId>
-            <version>${version.spring}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-core</artifactId>
+            <version>${version.hibernate}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>${version.postgresql}</version>
         </dependency>
     </dependencies>
 
@@ -94,7 +145,7 @@
                 <configuration>
                     <runTarget>/index.html</runTarget>
                     <port>8080</port>
-<!--                    <webappDirectory>src/main/webapp</webappDirectory>-->
+                    <!--                    <webappDirectory>src/main/webapp</webappDirectory>-->
                     <copyWebapp>true</copyWebapp>
                     <modules>
                         <module>ru.fil.gwt.Application</module>

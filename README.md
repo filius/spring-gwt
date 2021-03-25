@@ -3,3 +3,5 @@
 ```shell
 mvn gwt:run
 ```
+
+Maven dependency versions is very important for collaboration of spring and GWT!
